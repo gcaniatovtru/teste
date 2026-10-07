@@ -1,0 +1,9 @@
+{
+  "name": "calculadora-imc",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Calculadora de IMC para adultos em português, sem dependências.",
+  "scripts": { "test": "node --test" },
+  "engines": { "node": ">=20" }
+}

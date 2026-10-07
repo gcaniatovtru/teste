@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0e5953">
+  <meta name="description" content="Calcule seu índice de massa corporal com peso e altura. Calculadora de IMC para adultos, simples e gratuita.">
+  <title>Calculadora de IMC</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <main class="page">
+    <header class="page-header">
+      <span class="eyebrow">PESO & ALTURA</span>
+      <h1>Calculadora de IMC<span>.</span></h1>
+      <p>Informe suas medidas para calcular o índice de massa corporal.</p>
+    </header>
+
+    <div class="calculator">
+      <section class="card input-card" aria-labelledby="measurements-title">
+        <div class="section-heading"><span class="step">01</span><h2 id="measurements-title">Suas medidas</h2></div>
+        <form id="calculator-form" novalidate>
+          <div class="field">
+            <label for="weight">Peso</label>
+            <div class="input-wrap"><input id="weight" name="weight" type="text" inputmode="decimal" placeholder="Ex.: 70,5" autocomplete="off" aria-describedby="weight-hint weight-error" required><span class="unit">kg</span></div>
+            <p id="weight-hint" class="hint">Use o peso em quilogramas.</p>
+            <p id="weight-error" class="field-error" hidden></p>
+          </div>
+          <div class="field">
+            <div class="label-row"><label for="height">Altura</label><label class="sr-only" for="height-unit">Unidade de altura</label><select id="height-unit" name="height-unit"><option value="m">Metros (m)</option><option value="cm">Centímetros (cm)</option></select></div>
+            <div class="input-wrap"><input id="height" name="height" type="text" inputmode="decimal" placeholder="Ex.: 1,75" autocomplete="off" aria-describedby="height-hint height-error" required><span id="height-unit-label" class="unit">m</span></div>
+            <p id="height-hint" class="hint">Exemplo: 1,75 para um metro e setenta e cinco.</p>
+            <p id="height-error" class="field-error" hidden></p>
+          </div>
+          <button class="calculate-button" type="submit">Calcular IMC</button>
+          <button class="reset-button" type="reset">Limpar campos</button>
+        </form>
+        <div class="formula"><span>COMO É CALCULADO</span><p>IMC = peso (kg) ÷ altura (m)²</p></div>
+      </section>
+
+      <section class="card result-card" aria-labelledby="result-title">
+        <div class="section-heading"><span class="step">02</span><h2 id="result-title">Seu resultado</h2></div>
+        <div id="result" class="result-content" role="status" aria-live="polite" aria-atomic="true">
+          <div id="empty-state"><span class="empty-value">—</span><p>O resultado aparece aqui.</p><span class="hint">Preencha peso e altura e clique em calcular.</span></div>
+          <div id="calculated-state" hidden><span class="result-label">ÍNDICE DE MASSA CORPORAL</span><div class="result-number"><span id="bmi-value"></span><span class="result-unit">kg/m²</span></div><p id="bmi-category" class="category-badge"></p><p id="result-measurements" class="hint"></p></div>
+        </div>
+        <div class="reference">
+          <h3>Faixas de referência</h3>
+          <p class="hint">Classificação para adultos a partir de 20 anos.</p>
+          <table><caption class="sr-only">Classificação do índice de massa corporal de adultos em kg por metro quadrado</caption><thead><tr><th scope="col">IMC (kg/m²)</th><th scope="col">Classificação</th></tr></thead><tbody>
+            <tr data-category="underweight"><td>Menor que 18,5</td><td>Abaixo do peso</td></tr>
+            <tr data-category="healthy"><td>18,5 a menos de 25</td><td>Peso adequado</td></tr>
+            <tr data-category="overweight"><td>25 a menos de 30</td><td>Sobrepeso</td></tr>
+            <tr data-category="obesity1"><td>30 a menos de 35</td><td>Obesidade grau I</td></tr>
+            <tr data-category="obesity2"><td>35 a menos de 40</td><td>Obesidade grau II</td></tr>
+            <tr data-category="obesity3"><td>40 ou mais</td><td>Obesidade grau III</td></tr>
+          </tbody></table>
+        </div>
+      </section>
+    </div>
+    <footer><p>O IMC é um indicador de triagem e não substitui uma avaliação individual de saúde. Estas faixas não se aplicam a crianças e adolescentes e exigem interpretação específica na gestação.</p><a href="https://www.cdc.gov/bmi/adult-calculator/bmi-categories.html" target="_blank" rel="noopener noreferrer">Fonte das faixas: CDC</a></footer>
+    <noscript><p class="noscript">Ative o JavaScript do navegador para utilizar a calculadora.</p></noscript>
+  </main>
+</body>
+</html>
